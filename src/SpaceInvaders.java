@@ -50,7 +50,7 @@ public class SpaceInvaders extends Application
         timeline.play();
         canvas.setCursor( Cursor.MOVE );
         canvas.setOnMouseMoved( e -> mouseX = e.getX() );
-        canvas.setOnMouseClicked( e ->
+        canvas.setOnMousePressed( e ->
         {
             if( bullets.size() < MAX_SHOTS ) bullets.add( player.shoot() );
             if( gameOver )
