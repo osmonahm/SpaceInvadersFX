@@ -3,15 +3,22 @@ import javafx.scene.paint.Color;
 
 import java.util.Random;
 
-// Environment
+/**
+ * Class Universe is used to create the game background
+ */
 public class Universe
 {
-    int posX, posY;
-    private int frameWidth;
-    private int frameHeight;
-    private int w, h, r, g, b;
-    private double opacity;
+    int posX, posY;                         // the x and y coordinates
+    private int frameWidth, frameHeight;    // the frame width and height
+    private int w, h, r, g, b;              // the width and height of the background rocks, and the rgb components
+    private double opacity;                 // the oppacity of the background rocks
     
+    /**
+     *
+     * @param RAND - used for randomness
+     * @param fW   - the frame width
+     * @param fH   - the frame height
+     */
     public Universe( Random RAND, int fW, int fH )
     {
         frameWidth = fW;
@@ -28,6 +35,10 @@ public class Universe
         if( opacity > 0.5 ) opacity = 0.5;
     }
     
+    /**
+     * Draws the universe
+     * @param gc - the graphics pen
+     */
     public void draw( GraphicsContext gc )
     {
         if( opacity > 0.8 ) opacity -= 0.01;
