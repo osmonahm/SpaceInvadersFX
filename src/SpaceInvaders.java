@@ -35,7 +35,7 @@ public class SpaceInvaders extends Application
     List<Universe> universe;                                                    // the universe components list
     List<Opponent> opponents;                                                   // the opponents list
     private GraphicsContext gc;                                                 // the graphics pen
-    private double mouseX;                                                      // used to keep track of the mouse
+    private double mouseX;                                                      // position of the mouse
     private int score;                                                          // used to keep track of the game score
     
     public static void main( String[] args )
