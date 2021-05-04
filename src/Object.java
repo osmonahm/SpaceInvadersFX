@@ -7,6 +7,7 @@ import javafx.scene.canvas.GraphicsContext;
  */
 public interface Object
 {
+    Rectangle getBounds();
     void setPosX( int posX );   // sets the x coordinate
     void setPosY( int posX );   // sets the y coordinate
     void setSize( int posX );   // sets the size
