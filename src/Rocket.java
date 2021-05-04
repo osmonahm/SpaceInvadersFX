@@ -1,6 +1,8 @@
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.image.Image;
 
+import java.awt.*;
+
 /**
  * Abstract Class Rocket is used for the player and opponent's rocket
  */
@@ -73,7 +75,9 @@ public abstract class Rocket implements Object
      */
     public boolean collide( Object other )
     {
-        return false;
+        Rectangle r1 = this.getBounds();
+        Rectangle r2 = other.getBounds();
+        return r1.intersects( r2 );
     }
     
     /**

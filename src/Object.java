@@ -8,13 +8,13 @@ import java.awt.*;
  */
 public interface Object
 {
-    Rectangle getBounds();
     void setPosX( int posX );   // sets the x coordinate
     void setPosY( int posX );   // sets the y coordinate
     void setSize( int posX );   // sets the size
     int getPosX();  // returns the x coordinate
     int getPosY();  // returns the y coordinate
     int getSize();  // returns the size
+    Rectangle getBounds();
     
     void update();  // updates the object
     void draw( GraphicsContext gc );    // draws the object

@@ -1,4 +1,5 @@
 import javafx.scene.image.Image;
+
 import java.awt.*;
 
 /**
@@ -19,6 +20,7 @@ public class Player extends Rocket
     
     /**
      * Shoots a bullet
+     *
      * @return - the bullet object
      */
     public Bullet shoot()
@@ -26,19 +28,9 @@ public class Player extends Rocket
         return new Bullet( getPosX() + getSize() / 2 - Bullet.size / 2, getPosY() - Bullet.size );
     }
     
-    @Override
-    /**
-     * Checks for collision
-     * @param other - the object used for comparsion
-     */
-    public boolean collide( Object other )
+    public Rectangle getBounds()
     {
-        int d = distance( this.getPosX() + this.getSize() / 2, this.getPosY() + this.getSize() / 2,
-                other.getPosX() + other.getSize() / 2, other.getPosY() + other.getSize() / 2 );
-        return d < other.getSize() / 2 + this.getSize() / 2;
-    }
-    public Rectangle getBounds(){
-        return new Rectangle(getPosX(), getPosY(), getSize(), getSize());
+        return new Rectangle( getPosX(), getPosY(), getSize(), getSize() );
     }
     
     /**
