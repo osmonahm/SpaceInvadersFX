@@ -6,6 +6,7 @@ public class Opponent extends Player
     private int speed;          // the speed of the rocket
     private int frameWidth;     // the width of the frame
     private int frameHeight;    // the height of the frame
+    private boolean outOfFrame = false;
     
     // images of the opponents
     static final Image[] OPPONENTS_IMG =
@@ -68,6 +69,15 @@ public class Opponent extends Player
     {
         super.update();
         if( !exploding && !destroyed ) setPosY( getPosY() + speed );
-        if( getPosY() > frameHeight ) destroyed = true;
+        if( getPosY() > frameHeight )
+        {
+            destroyed = true;
+            outOfFrame = true;
+        }
+    }
+    
+    public boolean isOutOfFrame()
+    {
+        return outOfFrame;
     }
 }

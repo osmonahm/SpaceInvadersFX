@@ -130,6 +130,14 @@ public class SpaceInvaders extends Application
             if( player.collide( e ) && !player.exploding ) player.explode();
         } );
         
+        for( int i = 0; i < opponents.size(); i++ )
+        {
+            if( opponents.get( i ).isOutOfFrame() && !gameOver )
+            {
+                score--;
+            }
+        }
+        
         // maintains the active bullets, updates and redraws them
         for( int i = bullets.size() - 1; i >= 0; i-- )
         {
