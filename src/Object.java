@@ -1,4 +1,5 @@
 import javafx.scene.canvas.GraphicsContext;
+import java.awt.*;
 
 /**
  * Interface Object is used for all objects that have a coordinate and a size,
@@ -7,6 +8,7 @@ import javafx.scene.canvas.GraphicsContext;
  */
 public interface Object
 {
+    Rectangle getBounds();
     void setPosX( int posX );   // sets the x coordinate
     void setPosY( int posX );   // sets the y coordinate
     void setSize( int posX );   // sets the size
@@ -17,5 +19,5 @@ public interface Object
     void update();  // updates the object
     void draw( GraphicsContext gc );    // draws the object
     boolean collide( Object other );    // detects collision
-    int distance( int x1, int y1, int x2, int y2 ); // used to measure distance between two objects
+    int distance( int x1, int y1, int x2, int y2 ); // measures the distance between two objects
 }

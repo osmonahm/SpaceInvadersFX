@@ -1,4 +1,5 @@
 import javafx.scene.image.Image;
+import java.awt.*;
 
 /**
  * Class Player is the player's rocket
@@ -17,7 +18,7 @@ public class Player extends Rocket
     }
     
     /**
-     * Used to shoot a bullet
+     * Shoots a bullet
      * @return - the bullet object
      */
     public Bullet shoot()
@@ -36,9 +37,12 @@ public class Player extends Rocket
                 other.getPosX() + other.getSize() / 2, other.getPosY() + other.getSize() / 2 );
         return d < other.getSize() / 2 + this.getSize() / 2;
     }
+    public Rectangle getBounds(){
+        return new Rectangle(getPosX(), getPosY(), getSize(), getSize());
+    }
     
     /**
-     * Used to explode the rocket
+     * Explodes the player's rocket
      */
     public void explode()
     {
