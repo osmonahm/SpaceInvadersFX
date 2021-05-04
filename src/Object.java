@@ -1,4 +1,5 @@
 import javafx.scene.canvas.GraphicsContext;
+import java.awt.*;
 
 /**
  * Interface Object is used for all objects that have a coordinate and a size,
