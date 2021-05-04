@@ -1,6 +1,6 @@
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.paint.Color;
-
+import java.awt.*;
 /**
  * Class Bullet is used for the rocket bullets
  */
@@ -74,12 +74,20 @@ public class Bullet implements Object
      * Checks for collision
      * @param other - the object used for comparsion
      */
-    public boolean collide( Object player )
+    /*public boolean collide( Object player )
     {
         int d = distance( this.posX + size / 2, this.posY + size / 2,
                 player.getPosX() + size / 2, player.getPosY() + size / 2 );
         
         return d < player.getSize() / 2 + size / 2;
+    }*/
+    public boolean collide(Object player){
+        Rectangle r1 = this.getBounds();
+        Rectangle r2 = player.getBounds();
+        return r1.intersects(r2);
+    }
+    public Rectangle getBounds(){
+        return new Rectangle(getPosX(), getPosY(), getSize(), getSize());
     }
     
     /**
