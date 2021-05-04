@@ -63,7 +63,7 @@ public abstract class Rocket implements Object
         {
             gc.drawImage( EXPLOSION_IMG, explosionStep % EXPLOSION_COLUMNS * EXPLOSION_WIDTH,
                     ( explosionStep / EXPLOSION_ROWS ) * EXPLOSION_HEIGHT + 1, EXPLOSION_WIDTH, EXPLOSION_HEIGHT,
-                    posX, posY, size, size );
+                          posX, posY, size, size );
         }
         else { gc.drawImage( img, posX, posY, size, size ); }
     }

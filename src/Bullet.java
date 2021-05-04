@@ -26,13 +26,13 @@ public class Bullet implements Object
     public void setGameScore( int score ) { gameScore = score; }
     
     public void setPosX( int posX ) { this.posX = posX; }   // sets the x coordinate
-    public int getPosX() { return posX; }   // returns the x coordinate
+    public int getPosX() { return posX; }                   // returns the x coordinate
     
     public void setPosY( int posY ) { this.posY = posY; }   // sets the y coordinate
-    public int getPosY() { return posY; }   // returns the y coordinate
+    public int getPosY() { return posY; }                   // returns the y coordinate
     
     public void setSize( int size ) { this.size = size; }   // sets the size
-    public int getSize() { return size; }   // returns the size
+    public int getSize() { return size; }                   // returns the size
     
     /**
      * Updated the bullet
