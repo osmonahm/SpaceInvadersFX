@@ -1,4 +1,5 @@
 import javafx.scene.image.Image;
+import java.awt.*;
 
 /**
  * Class Player is the player's rocket
@@ -35,6 +36,9 @@ public class Player extends Rocket
         int d = distance( this.getPosX() + this.getSize() / 2, this.getPosY() + this.getSize() / 2,
                 other.getPosX() + other.getSize() / 2, other.getPosY() + other.getSize() / 2 );
         return d < other.getSize() / 2 + this.getSize() / 2;
+    }
+    public Rectangle getBounds(){
+        return new Rectangle(getPosX(), getPosY(), getSize(), getSize());
     }
     
     /**
