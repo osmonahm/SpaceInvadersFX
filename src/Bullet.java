@@ -90,16 +90,4 @@ public class Bullet implements Object
     {
         return new Rectangle( getPosX(), getPosY(), getSize(), getSize() );
     }
-    
-    /**
-     * @param x1 - the first object x coordinate
-     * @param y1 - the first object y coordinate
-     * @param x2 - the second object x coordinate
-     * @param y2 - the second object y coordinate
-     * @return - the distance between the two objects
-     */
-    public int distance( int x1, int y1, int x2, int y2 )
-    {
-        return ( int ) Math.sqrt( Math.pow( x1 - x2, 2 ) + Math.pow( y1 - y2, 2 ) );
-    }
 }
