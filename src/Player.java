@@ -18,7 +18,7 @@ public class Player extends Rocket
     }
     
     /**
-     * Used to shoot a bullet
+     * Shoots a bullet
      * @return - the bullet object
      */
     public Bullet shoot()
@@ -42,7 +42,7 @@ public class Player extends Rocket
     }
     
     /**
-     * Used to explode the rocket
+     * Explodes the player's rocket
      */
     public void explode()
     {
