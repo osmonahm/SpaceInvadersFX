@@ -19,5 +19,5 @@ public interface Object
     void update();  // updates the object
     void draw( GraphicsContext gc );    // draws the object
     boolean collide( Object other );    // detects collision
-    int distance( int x1, int y1, int x2, int y2 ); // used to measure distance between two objects
+    int distance( int x1, int y1, int x2, int y2 ); // measures the distance between two objects
 }
