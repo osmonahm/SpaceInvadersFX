@@ -10,7 +10,7 @@ public interface Object
 {
     void setPosX( int posX );   // sets the x coordinate
     void setPosY( int posX );   // sets the y coordinate
-    void setSize( int posX );   // sets the size
+    void setSize( int size );   // sets the size
     int getPosX();  // returns the x coordinate
     int getPosY();  // returns the y coordinate
     int getSize();  // returns the size
