@@ -46,8 +46,7 @@ public class SpaceInvaders extends Application
     @Override
     /**
      * Starts the game, creates the canvas and adds the mouse listeners
-     */
-    public void start( Stage stage ) throws Exception
+     */ public void start( Stage stage ) throws Exception
     {
         Canvas canvas = new Canvas( WIDTH, HEIGHT );
         gc = canvas.getGraphicsContext2D();
@@ -55,10 +54,12 @@ public class SpaceInvaders extends Application
         timeline.setCycleCount( Timeline.INDEFINITE );
         timeline.play();
         canvas.setCursor( Cursor.MOVE );
-        canvas.setOnMouseMoved( e -> {
-        if(e.getX()>0 && e.getX()<WIDTH-PLAYER_SIZE){
-            mouseX = e.getX();
-        }} );
+        
+        canvas.setOnMouseMoved( e ->
+        {
+            if( e.getX() > 0 && e.getX() < WIDTH - PLAYER_SIZE ) mouseX = e.getX();
+        } );
+        
         canvas.setOnMousePressed( e ->
         {
             if( bullets.size() < MAX_SHOTS ) bullets.add( player.shoot() );
@@ -68,11 +69,12 @@ public class SpaceInvaders extends Application
                 setup();
                 score = 0;
             }
-
+            
         } );
+        
         canvas.setOnMouseDragged( e ->
         {
-            if(e.getX()>0&&e.getX()<WIDTH-PLAYER_SIZE){mouseX=e.getX();}
+            if( e.getX() > 0 && e.getX() < WIDTH - PLAYER_SIZE ) mouseX = e.getX();
             if( bullets.size() < MAX_SHOTS ) bullets.add( player.shoot() );
             if( gameOver )
             {
@@ -81,6 +83,7 @@ public class SpaceInvaders extends Application
                 score = 0;
             }
         } );
+        
         setup();
         stage.setScene( new Scene( new StackPane( canvas ) ) );
         stage.setTitle( "Space Invaders" );
@@ -101,6 +104,7 @@ public class SpaceInvaders extends Application
     
     /**
      * Runs the game
+     *
      * @param gc - the graphics pen
      */
     private void run( GraphicsContext gc )
@@ -133,7 +137,7 @@ public class SpaceInvaders extends Application
         {
             if( player.collide( e ) && !player.exploding ) player.explode();
         } );
-    
+        
         for( Opponent opponent : opponents )
             if( opponent.isOutOfFrame() && !gameOver ) score--;
         
@@ -159,7 +163,6 @@ public class SpaceInvaders extends Application
                     opponent.explode();
                     bullet.toRemove = true;
                 }
-
             }
         }
         
@@ -171,7 +174,8 @@ public class SpaceInvaders extends Application
         
         gameOver = player.destroyed;    // checks if the game is over
         
-        if( RAND.nextInt( 10 ) > 2 ) universe.add( new Universe( RAND, WIDTH, HEIGHT ) );   // adds new universe components
+        if( RAND.nextInt( 10 ) > 2 )
+            universe.add( new Universe( RAND, WIDTH, HEIGHT ) );   // adds new universe components
         
         // maintains the active universe components
         for( int i = 0; i < universe.size(); i++ )
@@ -182,13 +186,29 @@ public class SpaceInvaders extends Application
     
     /**
      * Used to create a new opponent
+     *
      * @return - the opponent object
      */
     Opponent newOpponent()
     {
-        Opponent op = new Opponent( 50 + RAND.nextInt( WIDTH - 100 ), 0, PLAYER_SIZE, Opponent.OPPONENTS_IMG[RAND.nextInt( Opponent.OPPONENTS_IMG.length )] );
+        int xPos = genXPos();
+        int yPos = 0;
+        
+        Opponent op = new Opponent( xPos, yPos, PLAYER_SIZE, Opponent.OPPONENTS_IMG[RAND.nextInt( Opponent.OPPONENTS_IMG.length )] );
         op.setSpeed( ( score / 5 ) + 2 );
         op.setFrameHeight( HEIGHT );
         return op;
+    }
+    
+    private int genXPos()
+    {
+        int xPos = 50 + RAND.nextInt( WIDTH - 100 );
+        
+        for( Opponent opponent : opponents )
+            if( ( xPos > opponent.getPosX() && xPos < opponent.getPosX() + PLAYER_SIZE )
+                    || ( xPos < opponent.getPosX() && xPos + PLAYER_SIZE > opponent.getPosX() ) )
+                xPos = genXPos();
+            
+        return xPos;
     }
 }

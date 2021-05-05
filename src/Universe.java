@@ -14,7 +14,6 @@ public class Universe
     private double opacity;                 // the oppacity of the background rocks
     
     /**
-     *
      * @param RAND - used for randomness
      * @param fW   - the frame width
      * @param fH   - the frame height

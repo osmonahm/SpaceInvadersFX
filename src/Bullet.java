@@ -44,7 +44,6 @@ public class Bullet implements Object
     
     /**
      * Draws the bullet, with its various forms
-     *
      * @param gc - the graphics pen
      */
     public void draw( GraphicsContext gc )

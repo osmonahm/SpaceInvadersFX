@@ -2,9 +2,8 @@ import javafx.scene.canvas.GraphicsContext;
 import java.awt.*;
 
 /**
- * Interface Object is used for all objects that have a coordinate and a size,
- * can be drawn, should dettect collision and measure the distance between
- * two objects.
+ * Interface Object is used for all objects that have coordinates and a size,
+ * can be drawn, and should detect collision.
  */
 public interface Object
 {
