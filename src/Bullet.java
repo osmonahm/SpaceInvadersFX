@@ -52,7 +52,7 @@ public class Bullet implements Object
         {
             gc.setFill( Color.YELLOWGREEN );
             speed = 30;
-            gc.fillRect( posX - 5, posY - 10, size + 7, size + 20 );
+            gc.fillRoundRect( posX - 5, posY - 10, size + 7, size + 20, 10, 10 );
         }
         else if( gameScore > 230 && gameScore <= 330 || gameScore>=410 && gameScore<=510 )
         {

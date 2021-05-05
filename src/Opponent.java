@@ -10,18 +10,7 @@ public class Opponent extends Player
     
     // images of the opponents
     static final Image[] OPPONENTS_IMG =
-            {
-                    new Image( "file:images/1.png" ),
-                    new Image( "file:images/2.png" ),
-                    new Image( "file:images/3.png" ),
-                    new Image( "file:images/4.png" ),
-                    new Image( "file:images/5.png" ),
-                    new Image( "file:images/6.png" ),
-                    new Image( "file:images/7.png" ),
-                    new Image( "file:images/8.png" ),
-                    new Image( "file:images/9.png" ),
-                    new Image( "file:images/10.png" )
-            };
+            { new Image( "file:resources/1.png" ), new Image( "file:resources/2.png" ), new Image( "file:resources/3.png" ), new Image( "file:resources/4.png" ), new Image( "file:resources/5.png" ), new Image( "file:resources/6.png" ), new Image( "file:resources/7.png" ), new Image( "file:resources/8.png" ), new Image( "file:resources/9.png" ), new Image( "file:resources/10.png" ), new Image( "file:resources/11.png" ), new Image( "file:resources/12.png" ), new Image( "file:resources/13.png" ), new Image( "file:resources/14.png" ), new Image( "file:resources/15.png" ), new Image( "file:resources/16.png" ), };
     
     /**
      * @param posX - the x coordinate of the rocket

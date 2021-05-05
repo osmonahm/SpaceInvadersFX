@@ -13,7 +13,6 @@ import javafx.scene.text.TextAlignment;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 
-import javax.swing.*;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
@@ -24,7 +23,7 @@ import java.util.stream.IntStream;
  */
 public class SpaceInvaders extends Application
 {
-    static final Image PLAYER_IMG = new Image( "file:images/player.png" );   // the player's rocket image
+    static final Image PLAYER_IMG = new Image( "file:resources/player.png" );   // the player's rocket image
     private static final Random RAND = new Random();                            // used to get random numbers
     private static final int WIDTH = 800;                                       // the frame width
     private static final int HEIGHT = 600;                                      // the frame height
@@ -73,14 +72,10 @@ public class SpaceInvaders extends Application
         } );
     
         canvas.setOnMousePressed( e ->
-        {
-            toggleShootBullets = true;
-        } );
+        { toggleShootBullets = true; } );
     
         canvas.setOnMouseReleased( e ->
-        {
-            toggleShootBullets = false;
-        } );
+        { toggleShootBullets = false; } );
     
         canvas.setOnMouseDragged( e ->
         {
