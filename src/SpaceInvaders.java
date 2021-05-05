@@ -13,6 +13,7 @@ import javafx.scene.text.TextAlignment;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 
+import javax.swing.*;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
@@ -57,7 +58,9 @@ public class SpaceInvaders extends Application
         canvas.setCursor( Cursor.MOVE );
     
         canvas.setOnMouseMoved( e ->
-        { if( e.getX() > 0 && e.getX() < WIDTH - PLAYER_SIZE ) mouseX = e.getX(); } );
+        {
+            if( e.getX() > 0 && e.getX() < WIDTH - PLAYER_SIZE ) mouseX = e.getX();
+        } );
     
         canvas.setOnMouseClicked( e ->
         {
@@ -75,7 +78,9 @@ public class SpaceInvaders extends Application
         } );
     
         canvas.setOnMouseReleased( e ->
-        { toggleShootBullets = false; } );
+        {
+            toggleShootBullets = false;
+        } );
     
         canvas.setOnMouseDragged( e ->
         {
@@ -118,10 +123,7 @@ public class SpaceInvaders extends Application
     
         // shoots bullets when mouse is clicked
         if( toggleShootBullets )
-        {
-            try { Thread.sleep( 0 ); } catch( InterruptedException e ) { Thread.currentThread().interrupt(); }
             if( bullets.size() < MAX_SHOTS ) bullets.add( player.shoot() );
-        }
     
         // checks if the game is finished, and prompts for a replay
         if( gameOver )
