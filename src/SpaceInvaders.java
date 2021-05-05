@@ -38,6 +38,8 @@ public class SpaceInvaders extends Application
     private double mouseX;                                                      // position of the mouse
     private int score;                                                          // used to keep track of the game score
     
+    private boolean toggleThrowBullets = false;
+    
     public static void main( String[] args )
     {
         launch();
@@ -54,36 +56,38 @@ public class SpaceInvaders extends Application
         timeline.setCycleCount( Timeline.INDEFINITE );
         timeline.play();
         canvas.setCursor( Cursor.MOVE );
-        
+    
         canvas.setOnMouseMoved( e ->
         {
             if( e.getX() > 0 && e.getX() < WIDTH - PLAYER_SIZE ) mouseX = e.getX();
         } );
-        
-        canvas.setOnMousePressed( e ->
+    
+        canvas.setOnMouseClicked( e ->
         {
-            if( bullets.size() < MAX_SHOTS ) bullets.add( player.shoot() );
             if( gameOver )
             {
                 gameOver = false;
                 setup();
                 score = 0;
             }
-            
         } );
-        
+    
+        canvas.setOnMousePressed( e ->
+        {
+            toggleThrowBullets = true;
+        } );
+    
+        canvas.setOnMouseReleased( e ->
+        {
+            toggleThrowBullets = false;
+        } );
+    
         canvas.setOnMouseDragged( e ->
         {
             if( e.getX() > 0 && e.getX() < WIDTH - PLAYER_SIZE ) mouseX = e.getX();
-            if( bullets.size() < MAX_SHOTS ) bullets.add( player.shoot() );
-            if( gameOver )
-            {
-                gameOver = false;
-                setup();
-                score = 0;
-            }
+            toggleThrowBullets = true;
         } );
-        
+    
         setup();
         stage.setScene( new Scene( new StackPane( canvas ) ) );
         stage.setTitle( "Space Invaders" );
@@ -116,7 +120,9 @@ public class SpaceInvaders extends Application
         gc.setFont( Font.font( 20 ) );
         gc.setFill( Color.WHITE );
         gc.fillText( "Score: " + score, 60, 20 );
-        
+    
+        if( toggleThrowBullets ) if( bullets.size() < MAX_SHOTS ) bullets.add( player.shoot() );
+    
         // checks if the game is finished, and prompts for a replay
         if( gameOver )
         {
@@ -124,7 +130,7 @@ public class SpaceInvaders extends Application
             gc.setFill( Color.YELLOW );
             gc.fillText( "Game Over \n Your Score is: " + score + " \n Click to play again", WIDTH / 2.0, HEIGHT / 2.5 );
         }
-        
+    
         universe.forEach( u -> u.draw( gc ) );  // redraws the universe components
         
         // updates, redraws, and changes the position of the player
@@ -139,7 +145,7 @@ public class SpaceInvaders extends Application
         } );
         
         for( Opponent opponent : opponents )
-            if( opponent.isOutOfFrame() && !gameOver ) score--;
+            if( opponent.isOutOfFrame() && !gameOver ) score -= 5;
         
         // maintains the active bullets, updates and redraws them
         for( int i = bullets.size() - 1; i >= 0; i-- )
@@ -191,7 +197,7 @@ public class SpaceInvaders extends Application
      */
     Opponent newOpponent()
     {
-        int xPos = genXPos();
+        int xPos = genXPos( 100 );
         int yPos = 0;
         
         Opponent op = new Opponent( xPos, yPos, PLAYER_SIZE, Opponent.OPPONENTS_IMG[RAND.nextInt( Opponent.OPPONENTS_IMG.length )] );
@@ -200,15 +206,16 @@ public class SpaceInvaders extends Application
         return op;
     }
     
-    private int genXPos()
+    private int genXPos( int termination )
     {
         int xPos = 50 + RAND.nextInt( WIDTH - 100 );
         
+        if( termination == 0 ) return 50;
+        
         for( Opponent opponent : opponents )
-            if( ( xPos > opponent.getPosX() && xPos < opponent.getPosX() + PLAYER_SIZE )
-                    || ( xPos < opponent.getPosX() && xPos + PLAYER_SIZE > opponent.getPosX() ) )
-                xPos = genXPos();
-            
+            if( ( xPos > opponent.getPosX() && xPos < opponent.getPosX() + PLAYER_SIZE ) || ( xPos < opponent.getPosX() && xPos + PLAYER_SIZE >= opponent.getPosX() ) )
+                xPos = genXPos( --termination );
+        
         return xPos;
     }
 }
