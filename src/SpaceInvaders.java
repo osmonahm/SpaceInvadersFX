@@ -70,7 +70,9 @@ public class SpaceInvaders extends Application
         } );
     
         canvas.setOnMousePressed( e ->
-        { toggleShootBullets = true; } );
+        {
+            toggleShootBullets = true;
+        } );
     
         canvas.setOnMouseReleased( e ->
         { toggleShootBullets = false; } );
@@ -78,7 +80,7 @@ public class SpaceInvaders extends Application
         canvas.setOnMouseDragged( e ->
         {
             if( e.getX() > 0 && e.getX() < WIDTH - PLAYER_SIZE ) mouseX = e.getX();
-            toggleShootBullets = true;
+            toggleShootBullets = !gameOver;
         } );
     
         setup();
@@ -115,11 +117,16 @@ public class SpaceInvaders extends Application
         gc.fillText( "Score: " + score, 60, 20 );
     
         // shoots bullets when mouse is clicked
-        if( toggleShootBullets ) if( bullets.size() < MAX_SHOTS ) bullets.add( player.shoot() );
+        if( toggleShootBullets )
+        {
+            try { Thread.sleep( 0 ); } catch( InterruptedException e ) { Thread.currentThread().interrupt(); }
+            if( bullets.size() < MAX_SHOTS ) bullets.add( player.shoot() );
+        }
     
         // checks if the game is finished, and prompts for a replay
         if( gameOver )
         {
+            toggleShootBullets = false;
             gc.setFont( Font.font( 35 ) );
             gc.setFill( Color.YELLOW );
             gc.fillText( "Game Over \n Your Score is: " + score + " \n Click to play again", WIDTH / 2.0, HEIGHT / 2.5 );
