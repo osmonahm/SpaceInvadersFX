@@ -48,19 +48,19 @@ public class Bullet implements Object
      */
     public void draw( GraphicsContext gc )
     {
-        if( gameScore >= 50 && gameScore <= 70 || gameScore >= 120 && gameScore <= 200 )
+        if( gameScore >= 40 && gameScore <= 90 || gameScore >= 130 && gameScore <= 180 )
         {
             gc.setFill( Color.YELLOWGREEN );
             speed = 30;
-            gc.fillRect( posX - 5, posY - 10, size + 10, size + 20 );
+            gc.fillRect( posX - 5, posY - 10, size + 7, size + 20 );
         }
-        else if( gameScore > 200 && gameScore <= 300 )
+        else if( gameScore > 230 && gameScore <= 330 || gameScore>=410 && gameScore<=510 )
         {
             gc.setFill( Color.DARKORANGE );
-            speed = 40;
+            speed = 35;
             gc.fillRoundRect( posX - 5, posY - 10, size + 10, size + 20, 120, 120 );
         }
-        else if( gameScore > 300 )
+        else if( gameScore > 610 && gameScore <=710 || gameScore>=990)
         {
             gc.setFill( Color.BLUEVIOLET );
             speed = 40;
@@ -70,8 +70,7 @@ public class Bullet implements Object
         {
             gc.setFill( Color.RED );
             gc.fillOval( posX, posY, size, size );
-        }
-    }
+        }    }
     
     @Override
     /**
