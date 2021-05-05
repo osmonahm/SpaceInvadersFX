@@ -68,10 +68,11 @@ public class SpaceInvaders extends Application
                 setup();
                 score = 0;
             }
+
         } );
         canvas.setOnMouseDragged( e ->
         {
-            mouseX = e.getX();
+            if(e.getX()>0&&e.getX()<WIDTH-PLAYER_SIZE){mouseX=e.getX();}
             if( bullets.size() < MAX_SHOTS ) bullets.add( player.shoot() );
             if( gameOver )
             {
@@ -158,6 +159,7 @@ public class SpaceInvaders extends Application
                     opponent.explode();
                     bullet.toRemove = true;
                 }
+
             }
         }
         
