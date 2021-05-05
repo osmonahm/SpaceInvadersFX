@@ -37,8 +37,7 @@ public class SpaceInvaders extends Application
     private GraphicsContext gc;                                                 // the graphics pen
     private double mouseX;                                                      // position of the mouse
     private int score;                                                          // used to keep track of the game score
-    
-    private boolean toggleThrowBullets = false;
+    private boolean toggleShootBullets = false;                                 // shoots bullets while true
     
     public static void main( String[] args )
     {
@@ -58,9 +57,7 @@ public class SpaceInvaders extends Application
         canvas.setCursor( Cursor.MOVE );
     
         canvas.setOnMouseMoved( e ->
-        {
-            if( e.getX() > 0 && e.getX() < WIDTH - PLAYER_SIZE ) mouseX = e.getX();
-        } );
+        { if( e.getX() > 0 && e.getX() < WIDTH - PLAYER_SIZE ) mouseX = e.getX(); } );
     
         canvas.setOnMouseClicked( e ->
         {
@@ -73,19 +70,15 @@ public class SpaceInvaders extends Application
         } );
     
         canvas.setOnMousePressed( e ->
-        {
-            toggleThrowBullets = true;
-        } );
+        { toggleShootBullets = true; } );
     
         canvas.setOnMouseReleased( e ->
-        {
-            toggleThrowBullets = false;
-        } );
+        { toggleShootBullets = false; } );
     
         canvas.setOnMouseDragged( e ->
         {
             if( e.getX() > 0 && e.getX() < WIDTH - PLAYER_SIZE ) mouseX = e.getX();
-            toggleThrowBullets = true;
+            toggleShootBullets = true;
         } );
     
         setup();
@@ -121,7 +114,8 @@ public class SpaceInvaders extends Application
         gc.setFill( Color.WHITE );
         gc.fillText( "Score: " + score, 60, 20 );
     
-        if( toggleThrowBullets ) if( bullets.size() < MAX_SHOTS ) bullets.add( player.shoot() );
+        // shoots bullets when mouse is clicked
+        if( toggleShootBullets ) if( bullets.size() < MAX_SHOTS ) bullets.add( player.shoot() );
     
         // checks if the game is finished, and prompts for a replay
         if( gameOver )
