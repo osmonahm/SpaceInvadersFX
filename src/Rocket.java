@@ -72,11 +72,24 @@ public abstract class Rocket implements Object
     /**
      * Checks for collision
      * @param other - the object used for comparsion
-     */
-    public boolean collide( Object other )
+     */ public boolean collide( Object other )
     {
         Rectangle r1 = this.getBounds();
         Rectangle r2 = other.getBounds();
         return r1.intersects( r2 );
+    }
+    
+    /**
+     * Explodes the rocket
+     */
+    public void explode()
+    {
+        exploding = true;
+        explosionStep = -1;
+    }
+    
+    public Rectangle getBounds()
+    {
+        return new Rectangle( getPosX(), getPosY(), getSize(), getSize() );
     }
 }

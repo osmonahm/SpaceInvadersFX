@@ -27,18 +27,4 @@ public class Player extends Rocket
     {
         return new Bullet( getPosX() + getSize() / 2 - Bullet.size / 2, getPosY() - Bullet.size );
     }
-    
-    public Rectangle getBounds()
-    {
-        return new Rectangle( getPosX(), getPosY(), getSize(), getSize() );
-    }
-    
-    /**
-     * Explodes the player's rocket
-     */
-    public void explode()
-    {
-        exploding = true;
-        explosionStep = -1;
-    }
 }
