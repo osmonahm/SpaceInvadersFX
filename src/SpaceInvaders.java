@@ -23,10 +23,10 @@ import java.util.stream.IntStream;
  */
 public class SpaceInvaders extends Application
 {
-    static final Image PLAYER_IMG = new Image( "file:resources/player.png" );   // the player's rocket image
+    static final Image PLAYER_IMG = new Image( "file:resources/player.png" );// the player's rocket image
     private static final Random RAND = new Random();                            // used to get random numbers
-    private static final int WIDTH = 800;                                       // the frame width
-    private static final int HEIGHT = 600;                                      // the frame height
+    private static final int WIDTH = 1200;                                      // the frame width
+    private static final int HEIGHT = 650;                                      // the frame height
     private static final int PLAYER_SIZE = 60;                                  // the player size
     final int MAX_OPPONENTS = 10, MAX_SHOTS = MAX_OPPONENTS * 2;                // the maximum number of opponents
     boolean gameOver = false;                                                   // checks if game is finished
@@ -38,6 +38,12 @@ public class SpaceInvaders extends Application
     private double mouseX;                                                      // position of the mouse
     private int score;                                                          // used to keep track of the game score
     private boolean toggleShootBullets = false;                                 // shoots bullets while true
+    
+    
+    public SpaceInvaders()
+    {
+        //launch();
+    }
     
     public static void main( String[] args )
     {
