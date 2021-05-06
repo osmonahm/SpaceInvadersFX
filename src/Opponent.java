@@ -28,7 +28,7 @@ public class Opponent extends Player
      */
     public void setSpeed( int score )
     {
-        speed = ( score / 5 ) + 2;
+        speed = ( score / 4 ) + 10;
     }
     
     /**
