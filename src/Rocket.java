@@ -14,7 +14,7 @@ public abstract class Rocket implements Object
     int explosionStep = 0;          // measures the explosion step
     
     // used to get the different explosion images
-    static final Image EXPLOSION_IMG = new Image( "file:images/explosion.png" );
+    static final Image EXPLOSION_IMG = new Image( "file:resources/explosion.png" );
     static final int EXPLOSION_WIDTH = 128;
     static final int EXPLOSION_HEIGHT = 128;
     static final int EXPLOSION_ROWS = 3;
